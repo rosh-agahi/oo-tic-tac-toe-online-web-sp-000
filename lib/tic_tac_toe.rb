@@ -1,6 +1,7 @@
 class TicTacToe
   
   attr_accessor :board, :user_input, :occupied, :index, :player
+  
   def initialize
     @board = Array.new(9," ")
   end
@@ -11,13 +12,13 @@ class TicTacToe
   puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
   puts "-----------"
   puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
-end
+  end
 
-def input_to_index(@user_input)
+  def input_to_index(@user_input)
   user_input.to_i - 1
-end
+  end
 
-def turn_count(@board)
+  def turn_count(@board)
   @occupied = 0
   turn_counter = @board.each do |position|
     if position == "X" || position == "O"
@@ -25,57 +26,54 @@ def turn_count(@board)
     end
     end
   occupied
-end
+  end
 
-def current_player(@board)
+  def current_player(@board)
   (turn_count(board) % 2 == 0? "X" : "O")
-end
+  end
 
-def move(@board,@index,@player)
+  def move(@board,@index,@player)
   board[index] = player
-end
-
-def position_taken?(@board,@index)
-  if @board[@index] == " " || @board[@index] == "" || @board[@index] == nil
-    return false
-    else 
-    return true
   end
-end
 
-def valid_move?(@board,@index)
-  if position_taken?(@board,@index) == false && @index.between?(0,8)
-    return true
+  def position_taken?(@board,@index)
+    if @board[@index] == " " || @board[@index] == "" || @board[@index] == nil
+      return false
+      else 
+      return true
+    end
+  end
+
+  def valid_move?(@board,@index)
+    if position_taken?(@board,@index) == false && @index.between?(0,8)
+      return true
+      else
+      return false
+    end
+  end
+
+  def turn(@board)
+    puts "Please enter 1-9:"
+    @user_input = gets.chomp
+    @index = input_to_index(@user_input)
+    @player = current_player(@board)
+    if valid_move?(@board,@index) == true 
+      move(@board,@index,@player)
+      display_board(@board)
     else
-    return false
-  end
+      turn(@board)
+    end
 end
 
-def turn(board)
-  puts "Please enter 1-9:"
-  user_input = gets.chomp
-  index = input_to_index(user_input)
-  player = current_player(board)
-  if valid_move?(board,index) == true 
-    move(board,index,player)
-    display_board(board)
-  else
-    turn(board)
+def play(@board)
+  until over?(@board) || draw?(@board)
+  until over?(@board)
+  turn(@board)
   end
-end
-
-def play(board)
-<<<<<<< HEAD
-  until over?(board) || draw?(board)
-=======
-  until over?(board)
->>>>>>> 051206c00292f820dee5be7abd5b0b9a7023804f
-  turn(board)
-  end
-  if draw?(board)
+  if draw?(@board)
   puts "Cat's Game!"
   else
-  puts "Congratulations #{winner(board)}!"
+  puts "Congratulations #{winner(@board)}!"
   end
 end
 
@@ -92,7 +90,7 @@ WIN_COMBINATIONS = [
   [2,4,6]  # Diagonal 2
   ]
   
-def won?(board)
+def won?(@board)
   WIN_COMBINATIONS.each do |combo|
     if combo.all? {|i| board[i] == "X"}
       return combo
@@ -103,21 +101,21 @@ def won?(board)
   nil
 end
 
-def full?(board)
-  board.all?{|character| character == "X" || character == "O"}
+def full?(@board)
+  @board.all?{|character| character == "X" || character == "O"}
 end
 
-def draw?(board)
-  full?(board) && !won?(board)
+def draw?(@board)
+  full?(@board) && !won?(@board)
 end
 
-def over?(board)
-  won?(board) || full?(board)
+def over?(@board)
+  won?(@board) || full?(@board)
 end
 
-def winner(board)
-  if won?(board)
-    board[won?(board)[0]]
+def winner(@board)
+  if won?(@board)
+    @board[won?(@board)[0]]
   end
 end
   
