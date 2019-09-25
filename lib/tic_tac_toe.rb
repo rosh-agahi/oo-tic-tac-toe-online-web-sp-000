@@ -102,7 +102,7 @@ WIN_COMBINATIONS = [
   end
   
   def over?
-    won? || full?
+    draw? || won? || full?
   end
   
   def winner
