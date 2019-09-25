@@ -1,6 +1,6 @@
 class TicTacToe
   
-  attr_accessor :board, :user_input
+  attr_accessor :board, :user_input, :occupied, :index, :player
   def initialize
     @board = Array.new(9," ")
   end
@@ -13,13 +13,13 @@ class TicTacToe
   puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
 end
 
-def input_to_index(user_input)
+def input_to_index(@user_input)
   user_input.to_i - 1
 end
 
-def turn_count(board)
-  occupied = 0
-  turn_counter = board.each do |position|
+def turn_count(@board)
+  @occupied = 0
+  turn_counter = @board.each do |position|
     if position == "X" || position == "O"
     occupied += 1
     end
@@ -27,24 +27,24 @@ def turn_count(board)
   occupied
 end
 
-def current_player(board)
+def current_player(@board)
   (turn_count(board) % 2 == 0? "X" : "O")
 end
 
-def move(board,index,player)
+def move(@board,@index,@player)
   board[index] = player
 end
 
-def position_taken?(board,index)
-  if board[index] == " " || board[index] == "" || board[index] == nil
+def position_taken?(@board,@index)
+  if @board[@index] == " " || @board[@index] == "" || @board[@index] == nil
     return false
     else 
     return true
   end
 end
 
-def valid_move?(board,index)
-  if position_taken?(board,index) == false && index.between?(0,8)
+def valid_move?(@board,@index)
+  if position_taken?(@board,@index) == false && @index.between?(0,8)
     return true
     else
     return false
