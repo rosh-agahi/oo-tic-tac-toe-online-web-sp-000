@@ -97,7 +97,7 @@ WIN_COMBINATIONS = [
     end
   end
 
-  def full?(board)
+  def full?
     @board.all?{|character| character == "X" || character == "O"}
   end
   
