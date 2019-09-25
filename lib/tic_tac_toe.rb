@@ -79,7 +79,7 @@ class TicTacToe
 
 # Game Outcomes: Win / Draw
 
-WIN_COMBINATIONS = [
+@@WIN_COMBINATIONS = [
   [0,1,2], # Top row
   [3,4,5], # Middle row
   [6,7,8], # Bottom row
@@ -91,7 +91,7 @@ WIN_COMBINATIONS = [
   ]
   
   def won?(board)
-    WIN_COMBINATIONS.each do |combo|
+    @@WIN_COMBINATIONS.each do |combo|
       if combo.all? {|i| board[i] == "X"}
         return combo
       elsif combo.all? {|i| board[i] == "O"}
