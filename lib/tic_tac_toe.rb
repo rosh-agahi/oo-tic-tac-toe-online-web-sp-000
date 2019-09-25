@@ -87,15 +87,14 @@ WIN_COMBINATIONS = [
   [2,4,6]  # Diagonal 2
   ]
   
-  def won?(board)
-    WIN_COMBINATIONS.each do |combo|
-      if combo.all? {|i| @board[i] == "X"}
-        return combo
-      elsif combo.all? {|i| @board[i] == "O"}
+  def won?
+    WIN_COMBINATIONS.any? do |combo|
+      if position_taken?(combo[0]) &&
+        @board[combo[0]] == @board[combo[1]] &&
+        @board[combo[1]] == @board[combo[2]]
         return combo
       end
-      end
-    nil
+    end
   end
 
   def full?(board)
