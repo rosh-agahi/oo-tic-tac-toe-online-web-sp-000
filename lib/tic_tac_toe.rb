@@ -76,6 +76,7 @@ class TicTacToe
     puts "Congratulations #{winner(@board)}!"
     end
   end
+  end
 
 # Game Outcomes: Win / Draw
 
