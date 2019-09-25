@@ -102,11 +102,11 @@ WIN_COMBINATIONS = [
   end
   
   def draw?
-    full?(@board) && !won?(@board)
+    full? && !won?
   end
   
   def over?
-    won?(@board) || full?(@board)
+    won? || full?
   end
   
   def winner
