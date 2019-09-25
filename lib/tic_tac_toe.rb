@@ -3,7 +3,7 @@ class TicTacToe
   attr_accessor :board, :user_input, :occupied, :index, :player
   
   def initialize
-    @board = Array.new(9," ")
+    @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
   
   def display_board(board)
