@@ -32,7 +32,7 @@ class TicTacToe
   (turn_count(board) % 2 == 0? "X" : "O")
   end
 
-  def move(board,index,player)
+  def move
   board[index] = player
   end
 
