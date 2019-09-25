@@ -101,7 +101,7 @@ WIN_COMBINATIONS = [
     @board.all?{|character| character == "X" || character == "O"}
   end
   
-  def draw?(board)
+  def draw?
     full?(@board) && !won?(@board)
   end
   
