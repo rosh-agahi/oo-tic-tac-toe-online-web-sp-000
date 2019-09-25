@@ -105,11 +105,11 @@ WIN_COMBINATIONS = [
     full?(@board) && !won?(@board)
   end
   
-  def over?(board)
+  def over?
     won?(@board) || full?(@board)
   end
   
-  def winner(board)
+  def winner
     if won?(@board)
       @board[won?(@board)[0]]
     end
