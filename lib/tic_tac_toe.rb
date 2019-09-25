@@ -110,8 +110,8 @@ WIN_COMBINATIONS = [
   end
   
   def winner
-    if won?
-      @board[won?(@board)[0]]
+    if winning_combo = won?
+      @board[winning_combo.first]
     end
   end
   
