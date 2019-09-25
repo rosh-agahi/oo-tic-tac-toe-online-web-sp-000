@@ -88,10 +88,10 @@ WIN_COMBINATIONS = [
   ]
   
   def won?(board)
-    @@WIN_COMBINATIONS.each do |combo|
-      if combo.all? {|i| board[i] == "X"}
+    WIN_COMBINATIONS.each do |combo|
+      if combo.all? {|i| @board[i] == "X"}
         return combo
-      elsif combo.all? {|i| board[i] == "O"}
+      elsif combo.all? {|i| @board[i] == "O"}
         return combo
       end
       end
