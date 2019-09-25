@@ -7,25 +7,25 @@ class TicTacToe
   end
   
   def display_board(board)
-  puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
-  puts "-----------"
-  puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
-  puts "-----------"
-  puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts "-----------"
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts "-----------"
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
   def input_to_index(user_input)
-  user_input.to_i - 1
+    user_input.to_i - 1
   end
 
   def turn_count(board)
-  @occupied = 0
-  turn_counter = @board.each do |position|
-    if position == "X" || position == "O"
-    occupied += 1
-    end
-    end
-  occupied
+    @occupied = 0
+    turn_counter = @board.each do |position|
+      if position == "X" || position == "O"
+      occupied += 1
+      end
+      end
+    occupied
   end
 
   def current_player(board)
