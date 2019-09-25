@@ -101,22 +101,22 @@ WIN_COMBINATIONS = [
     nil
   end
 
-def full?(@board)
-  @board.all?{|character| character == "X" || character == "O"}
-end
-
-def draw?(@board)
-  full?(@board) && !won?(@board)
-end
-
-def over?(@board)
-  won?(@board) || full?(@board)
-end
-
-def winner(@board)
-  if won?(@board)
-    @board[won?(@board)[0]]
+  def full?(@board)
+    @board.all?{|character| character == "X" || character == "O"}
   end
-end
+  
+  def draw?(@board)
+    full?(@board) && !won?(@board)
+  end
+  
+  def over?(@board)
+    won?(@board) || full?(@board)
+  end
+  
+  def winner(@board)
+    if won?(@board)
+      @board[won?(@board)[0]]
+    end
+  end
   
 end
