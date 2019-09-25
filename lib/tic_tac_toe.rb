@@ -63,19 +63,19 @@ class TicTacToe
     else
       turn(@board)
     end
-end
+  end
 
-def play(@board)
-  until over?(@board) || draw?(@board)
-  until over?(@board)
-  turn(@board)
+  def play(@board)
+    until over?(@board) || draw?(@board)
+    until over?(@board)
+    turn(@board)
+    end
+    if draw?(@board)
+    puts "Cat's Game!"
+    else
+    puts "Congratulations #{winner(@board)}!"
+    end
   end
-  if draw?(@board)
-  puts "Cat's Game!"
-  else
-  puts "Congratulations #{winner(@board)}!"
-  end
-end
 
 # Game Outcomes: Win / Draw
 
@@ -90,16 +90,16 @@ WIN_COMBINATIONS = [
   [2,4,6]  # Diagonal 2
   ]
   
-def won?(@board)
-  WIN_COMBINATIONS.each do |combo|
-    if combo.all? {|i| board[i] == "X"}
-      return combo
-    elsif combo.all? {|i| board[i] == "O"}
-      return combo
-    end
-    end
-  nil
-end
+  def won?(@board)
+    WIN_COMBINATIONS.each do |combo|
+      if combo.all? {|i| board[i] == "X"}
+        return combo
+      elsif combo.all? {|i| board[i] == "O"}
+        return combo
+      end
+      end
+    nil
+  end
 
 def full?(@board)
   @board.all?{|character| character == "X" || character == "O"}
